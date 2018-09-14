@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <!-- Affichage de la liste des actualités, contenu avec les 100 premiers caractères -->
+
+    <div class="container backColor actu-margin">
+        {% for actu in listActu %}
+            <div class="row justify-content-start">
+                <div class="col-12">
+                    <a href="{{ path('display-actu', {'id' : actu.id}) }}"><h3>{{ actu.title }}</h3></a>
+                    <p>{{ actu.content|striptags|slice(0, 100) }}[...]</p>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}

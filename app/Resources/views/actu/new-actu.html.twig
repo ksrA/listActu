@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+        <div class="container backColor form-actu-align">
+                </br>
+                <h3 class="actu-title">Create new actu</h3>
+                {{ form(form) }}
+        </div>
+{% endblock %}
+

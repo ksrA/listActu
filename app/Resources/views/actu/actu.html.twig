@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container actu-align backColor">
+
+            <!-- Affichage de l'article --> 
+            
+            </br>
+            <h3 class="actu-title">{{ actu.title }}</h3>
+            <p>De {{actu.author}}, le {{ actu.dateActuality|date('d/m/Y') }}</p>
+            <p class="content-actu">{{ actu.content }}</p>
+            <hr>
+
+
+            <!-- Section commentaire -->
+
+            <button type="button" class="btn btn-info" onclick="myFunction()">Un avis ?</button>
+            <small><i>  {{ actu.numberComment }} commentaires..</i></small></br></br>
+            <div id="comment-section">
+                <form action="{{ path('display-actu', {'id' : actu.id}) }}" method="post">
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Pseudo" required/></br></br>
+                    <textarea name="comment" rows="5" cols="70" placeholder="Write your comment" required></textarea></br>
+                    <button type="submit" class="btn btn-info">Add comment</button></br>
+                </form>
+                <hr>
+                <div>
+                    {% for comment in actu.comments %}
+                    <b>{{comment.pseudo}}</b>
+                    <p><i>{{comment.comment}}</i></p>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('public/js/script.js') }}"></script>
+{% endblock %}
